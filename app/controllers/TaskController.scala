@@ -1,50 +1,44 @@
 package controllers
 
-import java.io.{BufferedReader, File}
-import java.nio.file.attribute.PosixFilePermission
-import java.nio.file.{Files, Path, Paths}
+import java.io.File
 
 import javax.inject._
 import play.api.mvc._
-import akka.stream.IOResult
-import akka.stream.scaladsl.{FileIO, Sink}
-import akka.util.ByteString
 import models.Node
 import org.apache.poi.ss.usermodel.{DataFormatter, Sheet, WorkbookFactory}
-import play.api.Logger
-import play.api.data.Form
-import play.api.data.Forms.mapping
-import play.api.libs.streams.Accumulator
-import play.api.mvc.MultipartFormData.FilePart
-import play.core.parsers.Multipart.FileInfo
-import play.api.data.Form
-import play.api.data.Forms._
-import org.apache._
 import play.api.libs.json.Json
 
-import scala.concurrent.{ExecutionContext, Future}
-import scala.io.Source
+import scala.concurrent.ExecutionContext
 
 @Singleton
 class TaskController @Inject()(cc: ControllerComponents)
                               (implicit executionContext: ExecutionContext)
   extends AbstractController(cc) {
 
+  /**
+   * Pierwszy widok z pierwszym zadaniem
+   */
   def goToFirstTask = Action { implicit request =>
       Ok(views.html.task_1(Json.toJson(taskToShow)))
   }
 
+  /**
+   * Drugi widok z drugim zadaniem
+   */
   def goToSecondTask = Action { implicit request =>
-
     Ok(views.html.task_2(taskToShow))
   }
 
+  /**
+   * Funkcja to przekazywanie listy typu Node do widoków
+   */
   def taskToShow = {
     val sheet = takeFileAndGiveSheet("TEST_SCALA.xlsx")
     val listTuple = addElementToTupleList(sheet)
     val listNodes: List[Node] = tuple4ToTreeNode(listTuple)
     listNodes
   }
+
   /**
    * Przypisanie elementów z pierwszego poziomu do listy,
    * w trakcie funkcji jest wywoływana funckja dołączjąca elementy 2 poziomu do list Node pierwszego poziomu
@@ -108,7 +102,6 @@ class TaskController @Inject()(cc: ControllerComponents)
     listNodesThirdLevel
   }
 
-
   /**
    * Pobiera path do pliku i generuje sheet
    * @param path ścieżka do pliku
@@ -140,5 +133,5 @@ class TaskController @Inject()(cc: ControllerComponents)
     })
     listTuple.reverse.drop(1)
   }
-}
 
+}
