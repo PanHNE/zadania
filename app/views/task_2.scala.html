@@ -1,0 +1,29 @@
+@(nodes: List[Node])
+
+@main("Task 2") {
+    <section>
+        <header>
+            <h1>Zadanie 2</h1>
+        </header>
+
+        <main>
+            @nodes.map { firstLevel =>
+              <div class="inline-block first-level @firstLevel.name" id="first-level">@firstLevel.name :: @firstLevel.id
+                @firstLevel.nodes.map { secondLevel =>
+                  <div class="inline-block second-level hide @secondLevel.name">@secondLevel.name :: @secondLevel.id
+                    @secondLevel.nodes.map { thirdLevel =>
+                        <div class="inline-block third-level hide @thirdLevel.name">@thirdLevel.name :: @thirdLevel.id</div>
+                    }
+                  </div>
+                }
+              </div>
+            }
+        </main>
+
+        <footer>
+            <button><a href="/">Do strony głównej</a></button>
+
+            <button><a href="/task/one">Do drugiego zadania</a></button>
+        </footer>
+    </section>
+}

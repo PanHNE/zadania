@@ -1,0 +1,12 @@
+@(text: String)(implicit request: MessagesRequestHeader)
+
+@main("Welcome to Play") {
+    <section>
+        <h2>Główna strona aplikacji</h2>
+    </section>
+
+    <main>
+        <button><a href="/task/one">Do pierwszego zadania</a></button>
+        <button><a href="/task/two">Do drugiego zadania</a></button>
+    </main>
+}

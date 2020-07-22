@@ -1,0 +1,21 @@
+@import play.api.libs.json._
+
+@(three: JsValue)
+
+@main("Task 1") {
+    <section>
+        <header>
+            <h1>Zadanie 1</h1>
+        </header>
+
+        <main>
+            <h2>@three</h2>
+        </main>
+
+        <footer>
+            <button><a href="/">Do strony głównej</a></button>
+
+            <button><a href="/task/two">Do drugiego zadania</a></button>
+        </footer>
+    </section>
+}

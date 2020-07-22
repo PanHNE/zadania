@@ -1,0 +1,12 @@
+# Routes
+
+# Strona główna
+GET     /                           controllers.HomeController.index
+
+# Pierwsze zadanie
+GET     /task/one                   controllers.TaskController.goToFirstTask
+
+# Drugie zadanie
+GET     /task/two                   controllers.TaskController.goToSecondTask
+
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)

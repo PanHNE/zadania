@@ -1,0 +1,22 @@
+body {
+    text-align: center;
+    font-family: "Helvetica Nueue", sans-serif;
+}
+
+main {
+    padding: 5em;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.first-level, .second-level, .third-level{
+    margin: 2em;
+    padding: .5em;
+    border: 1px solid black;
+}
+
+.hide {
+    display: none;
+}
