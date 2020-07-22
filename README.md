@@ -2,7 +2,7 @@
 Aby uruchomić aplikację należy ściągnąć projekt. 
 
 I. Sposób:
-Uruchomić IntelIj, otworzyć projekt w tym programie i go uruchomić w nim.
+1. Uruchomić IntelIj, otworzyć projekt w tym programie i go uruchomić w nim.
 
 II. Sposób:
 1. Wchodzimy do folderu z projektem. Otwieramy terminal i wpisujemy 
